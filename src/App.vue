@@ -1,34 +1,22 @@
 <script>
-import axios from 'axios';
+import AppHeader from './components/AppHeader.vue';
+import AppMain from './components/AppMain.vue';
 export default {
   name: 'App',
-  data() {
-    return {
-
-    }
-  },
   components: {
-
-  },
-  created() {
-    this.getPosts();
-  },
-
-  methods: {
-    getPosts() {
-      axios.get('http://localhost:8000/api/posts').then(resp => {
-        console.log(resp);
-      })
-    }
+    AppMain,
+    AppHeader
   }
 }
-
 </script>
 
 <template>
-  <h1>Pagina di Front Office</h1>
+  <AppHeader />
+  <main>
+    <AppMain />
+  </main>
 </template>
 
 <style lang="scss">
-@use './styles/general.scss' as *;
+@use "./styles/general.scss" as *;
 </style>
