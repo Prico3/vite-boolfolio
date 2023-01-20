@@ -1,6 +1,24 @@
 <script>
 export default {
-    name: 'AppHeader'
+    name: 'AppHeader',
+    data() {
+        return {
+            navigation: [
+                {
+                    label: 'Home',
+                    routeName: 'home'
+                },
+                {
+                    label: 'About us',
+                    routeName: 'about'
+                },
+                {
+                    label: 'Blog',
+                    routeName: 'blog'
+                }
+            ]
+        }
+    }
 }
 </script>
 
@@ -8,15 +26,24 @@ export default {
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand text-primary" href="#">BOOLPRESS</a>
+                <a class="navbar-brand text-primary" href="#">BoolFolio</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-            <div>
-                <a href="http://localhost:8000/admin">Area di amministrazione</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item" v-for="(navItem, index) in navigation" :key="index">
+                        <router-link :to="{ name: navItem.routeName }" class="nav-link" aria-current="page">{{
+                            navItem.label
+                        }}</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:8000/admin">Login</a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
