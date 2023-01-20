@@ -2,12 +2,13 @@
 import axios from 'axios';
 import AppLoader from './AppLoader.vue';
 import PostCard from './PostCard.vue';
+import { store } from '../store';
 export default {
     name: "AppMain",
     components: { PostCard, AppLoader },
     data() {
         return {
-            baseUrl: "http://localhost:8000",
+            store,
             posts: [],
             loading: false
         };
@@ -18,7 +19,7 @@ export default {
     methods: {
         getPosts() {
             this.loading = true;
-            axios.get(`${this.baseUrl}/api/posts`).then(resp => {
+            axios.get(`${this.store.apiBaseUrl}/api/posts`).then(resp => {
                 this.posts = resp.data.results;
                 this.loading = false;
             });

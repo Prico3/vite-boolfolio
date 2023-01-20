@@ -1,10 +1,11 @@
 <script>
+import { store } from '../store';
 export default {
     name: 'PostCard',
     data() {
         return {
             contentMaxLength: 200,
-            baseUrl: "http://127.0.0.1:8000",
+            store,
         }
     },
     props: {
@@ -29,7 +30,8 @@ export default {
         <div class="card-body">
             <div class="row justify-content-between">
                 <div class="col-4">
-                    <img v-if="post.cover_image" class="w-100" :src="`${baseUrl}/storage/${post.cover_image}`" alt="">
+                    <img v-if="post.cover_image" class="w-100"
+                        :src="`${this.store.apiBaseUrl}/storage/${post.cover_image}`" alt="">
                     <div v-else>
                         Nessuna immagine
                     </div>
